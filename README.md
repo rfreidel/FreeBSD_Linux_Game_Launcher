@@ -1,3 +1,6 @@
+# I recommend not using this code
+(except as an example of poorly written code)
+
 Linux Gaming with Arch Linux ennvironment
 
 Let's go through the steps to install the necessary packages and set up your environment correctly.
