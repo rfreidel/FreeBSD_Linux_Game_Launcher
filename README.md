@@ -146,10 +146,10 @@ Python
         if game_path and icon_path:
             subprocess.run(["arch-chroot", "/path/to/chroot", "bash", "-c", f"zenity --info --text='Launching {game_path}' && {game_path}"])
 
-win = GameLauncher()
-win.connect("destroy", Gtk.main_quit)
-win.show_all()
-Gtk.main()
+    win = GameLauncher()
+    win.connect("destroy", Gtk.main_quit)
+    win.show_all()
+    Gtk.main()
 
 Make sure to adjust the /path/to/chroot to the actual path of your chroot environment.
 
