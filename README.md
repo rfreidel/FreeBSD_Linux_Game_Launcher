@@ -112,7 +112,8 @@ echo "Applications installed successfully in the chroot environment."
 Updated game_launcher.py Script
 
 Here is the game_launcher.py script for managing and launching games:
-Python
+
+Python   
 
     import gi
     gi.require_version('Gtk', '3.0')
