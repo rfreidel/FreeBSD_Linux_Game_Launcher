@@ -1,5 +1,5 @@
 # I recommend not using this code
-(except as an example of poorly written code)
+(except as an example of poorly written code) I titled it game launcher, yet the launcher does not function, however the arch install does
 
 Linux Gaming with Arch Linux ennvironment
 
