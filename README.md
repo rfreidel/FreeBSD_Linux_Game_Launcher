@@ -114,12 +114,12 @@ Updated game_launcher.py Script
 Here is the game_launcher.py script for managing and launching games:
 Python
 
-import gi
-gi.require_version('Gtk', '3.0')
-from gi.repository import Gtk
-import subprocess
+    import gi
+    gi.require_version('Gtk', '3.0')
+    from gi.repository import Gtk
+    import subprocess
 
-class GameLauncher(Gtk.Window):
+    class GameLauncher(Gtk.Window):
 
     def __init__(self):
         Gtk.Window.__init__(self, title="Linux Game Launcher")
