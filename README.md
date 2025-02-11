@@ -1,7 +1,7 @@
 # I recommend not using this code
 (except as an example of poorly written code) I titled it game launcher, yet the launcher does not function, however the arch install does
 
-Linux Gaming with Arch Linux ennvironment
+Linux Gaming with Arch Linux environment
 
 Let's go through the steps to install the necessary packages and set up your environment correctly.
 Steps to Install PyGObject and Run the Game Launcher
