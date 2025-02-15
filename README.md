@@ -6,23 +6,23 @@ Steps to Install PyGObject and Run the Game Launcher
     Install PyGObject:
     sh
 
-sudo pkg install -y py39-gobject3
+    sudo pkg install -y py39-gobject3
 
 Ensure you have the correct version of Python and PyGObject:
 sh
 
-sudo pkg install -y python39 py39-pip
+    sudo pkg install -y python39 py39-pip
 
 Create a Virtual Environment (optional but recommended):
 sh
 
-python3.9 -m venv venv
-source venv/bin/activate
+    python3.9 -m venv venv
+    source venv/bin/activate
 
 Install PyGObject in the virtual environment:
 sh
 
-pip install PyGObject
+    pip install PyGObject
 
 Run the Game Launcher:
 sh
@@ -34,79 +34,78 @@ Updated setup_chroot.sh Script
 If you haven't already, here is the setup_chroot.sh script for setting up the Arch Linux chroot environment:
 sh
 
-#!/bin/sh
+    #!/bin/sh
 
-# Function to display an error message and exit
-exit_with_error() {
+    # Function to display an error message and exit
+    exit_with_error() {
     echo "Error: $1" >&2
     exit 1
-}
+    }
 
-# Check if the user is root
-if [ "$(id -u)" -ne 0 ]; then
+    # Check if the user is root
+    if [ "$(id -u)" -ne 0 ]; then
     exit_with_error "This script must be run as root. Please run it again with 'sudo'."
-fi
+    fi
 
-# Ensure arch-install-scripts are installed (these provide mkarchroot)
-pkg update && pkg upgrade -y
-pkg install -y arch-install-scripts
+    # Ensure arch-install-scripts are installed (these provide mkarchroot)
+    pkg update && pkg upgrade -y
+    pkg install -y arch-install-scripts
 
-# Ask the user to specify the installation directory
-read -p "Enter the installation directory for the Arch Linux environment: " INSTALL_DIR
-if [ -z "$INSTALL_DIR" ]; then
+    # Ask the user to specify the installation directory
+    read -p "Enter the installation directory for the Arch Linux environment: " INSTALL_DIR
+    if [ -z "$INSTALL_DIR" ]; then
     exit_with_error "No directory selected. Please select an installation directory to proceed."
-fi
+    fi
 
-# Ensure the installation directory exists
-mkdir -p "$INSTALL_DIR"
+    # Ensure the installation directory exists
+    mkdir -p "$INSTALL_DIR"
 
-# Set up the Arch Linux environment using mkarchroot
-echo "Setting up the Arch Linux environment. This may take a while..."
-mkarchroot "$INSTALL_DIR" base base-devel
+    # Set up the Arch Linux environment using mkarchroot
+    echo "Setting up the Arch Linux environment. This may take a while..."
+    mkarchroot "$INSTALL_DIR" base base-devel
 
-if [ $? -ne 0 ]; then
+    if [ $? -ne 0 ]; then
     exit_with_error "Failed to set up the Arch Linux environment. Please check your setup and try again."
-fi
+    fi
 
-echo "Arch Linux environment set up successfully!"
+    echo "Arch Linux environment set up successfully!"
 
-Updated install_apps_in_chroot.sh Script
+    Updated install_apps_in_chroot.sh Script
 
 Here is the install_apps_in_chroot.sh script for installing necessary applications inside the chroot:
 sh
 
-#!/bin/sh
+    #!/bin/sh
 
-# Function to display an error message and exit
-exit_with_error() {
-    echo "Error: $1" >&2
+    # Function to display an error message and exit
+     echo "Error: $1" >&2
     exit 1
-}
+    }
 
-# Check if the installation directory is provided
-if [ -z "$1" ]; then
+    # Check if the installation directory is provided
+    if [ -z "$1" ]; then
     exit_with_error "Installation directory not provided."
-fi
+    fi
 
-INSTALL_DIR="$1"
+    INSTALL_DIR="$1"
 
-# Ensure the installation directory exists
-if [ ! -d "$INSTALL_DIR" ]; then
+    # Ensure the installation directory exists
+    if [ ! -d "$INSTALL_DIR" ]; then
     exit_with_error "Installation directory does not exist."
-fi
+    fi
 
-# Enter the chroot environment and install necessary applications
-arch-chroot "$INSTALL_DIR" /bin/bash <<'EOF'
-pacman -Sy --noconfirm zenity
-EOF
+    # Enter the chroot environment and install necessary applications
+    arch-chroot "$INSTALL_DIR" /bin/bash <<'EOF'
+    pacman -Sy --noconfirm zenity
+    EOF
 
-if [ $? -ne 0 ]; then
+    if [ $? -ne 0 ]; then
     exit_with_error "Failed to install applications in the chroot environment."
-fi
+    fi
 
-echo "Applications installed successfully in the chroot environment."
+    echo "Applications installed successfully in the chroot environment."
 
-Updated game_launcher.py Script
+    Updated game_launcher.py Script
 
 Here is the game_launcher.py script for managing and launching games:
 
